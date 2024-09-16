@@ -10,19 +10,19 @@ SEND_PORT = 49000
 current_milli_time = lambda: int(round(time.time() * 1000))
 
 class XPlaneUdp:
-    
-    def __init__(self, ip, port):
+
+    def __init__(self, ip, port, listen_port=49006):
         self.xip = ip
         self.xport = port
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.sock.setblocking(0)
-        self.sock.bind(("", LISTEN_PORT))
+        self.sock.bind(("", listen_port))
         self.sendList = []
         self.dataList = {}
         self.lastDataTimer = current_milli_time()
         self.connected = False
-        
+
     def readData(self):
         if (self.lastDataTimer+10000 < current_milli_time()):
             if (self.connected == False):
@@ -31,7 +31,6 @@ class XPlaneUdp:
                 self.dataList = {}
         while(True):
             try:
-                
                 data, addr = self.sock.recvfrom(1024)
                 # print("received data:")
                 # print(addr)
@@ -54,43 +53,43 @@ class XPlaneUdp:
             except:
                 #print('no data')
                 break
-        
-        
+
+
     def sendDataref(self, dataref, value):
         message = b'DREF0'
         message = message + struct.pack("f", float(value))
         bytestring = dataref.encode()
         message = message + bytestring + b'\00'
         #print(message)
-        
+
         for i in range(509):
             message = message+b'\x20'
 
         message = message[:509]
 
         self.sock.sendto(message, (self.xip, self.xport))
-        
+
     def sendCommand(self, dataref):
         message = b'CMND0'
-        
+
         bytestring = dataref.encode()
         message = message + bytestring + b'\00'
         #print(message)
-        
+
         for i in range(509):
             message = message+b'\x20'
 
         message = message[:509]
 
         self.sock.sendto(message, (self.xip, self.xport))
-        
+
     def getDataref(self, dataref, interval):
         if dataref not in self.dataList:
             self.createDataref(dataref, interval)
             return 0
         else:
             return self.dataList[dataref]
-        
+
     def createDataref(self, dataref, interval):
         self.sendList.append(dataref)
         self.dataList[dataref] = 0
