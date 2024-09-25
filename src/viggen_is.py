@@ -254,7 +254,7 @@ class RunGUI(QMainWindow):
         self.buttonList.append( ColorButton(self,self.ui.button_hojd, "JAS/io/frontpanel/di/hojd", "orange", 1, lampDR="JAS/io/frontpanel/lo/hojd") )
         self.buttonList.append( ColorButton(self,self.ui.button_att, "JAS/io/frontpanel/di/att", "orange", 1, lampDR="JAS/io/frontpanel/lo/att") )
         self.buttonList.append( ColorButton(self,self.ui.button_spak, "JAS/io/frontpanel/di/spak", "orange", 1, lampDR="JAS/io/frontpanel/lo/spak") )
-        self.buttonList.append( ColorButton(self,self.ui.button_a15, "JAS/io/aj37/di/a15", "orange", 1, lampDR="JAS/io/aj37/lo/a15") )
+        self.buttonList.append( ColorButton(self,self.ui.button_a15, "JAS/io/frontpanel/di/alfa", "orange", 1, lampDR="JAS/io/frontpanel/lo/a14") )
         
         self.buttonList.append( ColorButton(self,self.ui.buttonLmod, "JAS/ti/land/lmod", "orange", 0, lampDR="JAS/ti/land/lmod") )
         
@@ -263,6 +263,7 @@ class RunGUI(QMainWindow):
         self.buttonList.append( ColorButton(self,self.ui.zon2, "JAS/io/aj37/lo/zon2", "white", 1, lampDR="JAS/io/aj37/lo/zon2") )
         self.buttonList.append( ColorButton(self,self.ui.zon3, "JAS/io/aj37/lo/zon3", "white", 1, lampDR="JAS/io/aj37/lo/zon3") )
         
+        self.buttonList.append( ColorButton(self,self.ui.button_parkbrake, "sim/cockpit2/controls/parking_brake_ratio", "red", 0, lampDR="sim/cockpit2/controls/parking_brake_ratio") )
         #self.buttonList.append( ColorButton(self,self.ui.dap_button_pluv, "JAS/system/dap/lamp/pluv", "green", 0) )
 
         self.ui.button_tanka.clicked.connect(self.buttonTankaFull)
@@ -310,6 +311,10 @@ class RunGUI(QMainWindow):
         # else:
         #     self.ui.lamps_hojd.setStyleSheet("background-color: white")
         
+        updateLamp(self, self.ui.lamps_skak, "JAS/io/aj37/lo/skak", "orange")
+        
+        updateLamp(self, self.ui.lamps_bramgd, "JAS/io/vat/lo/bramgd", "orange")
+        
         updateLamp(self, self.ui.lamps_ebk, "JAS/io/aj37/lo/ebk", "orange")
         updateLamp(self, self.ui.lamps_rev, "JAS/io/aj37/lo/reverser", "lightgreen")
         
@@ -324,8 +329,12 @@ class RunGUI(QMainWindow):
         updateLamp(self, self.ui.lamps_airbrake, "JAS/io/frontpanel/lo/airbrake", "lightgreen")
         
         
-        updateLamp(self, self.ui.lamps_park, "sim/cockpit2/controls/parking_brake_ratio", "red")
+        # updateLamp(self, self.ui.lamps_park, "sim/cockpit2/controls/parking_brake_ratio", "red")
         updateLamp(self, self.ui.lamps_gears, "sim/cockpit/switches/gear_handle_status", "lightgreen")
+        
+        updateLamp(self, self.ui.lamps_gear1, "JAS/io/frontpanel/lo/gear1", "green")
+        updateLamp(self, self.ui.lamps_gear2, "JAS/io/frontpanel/lo/gear2", "green")
+        updateLamp(self, self.ui.lamps_gear3, "JAS/io/frontpanel/lo/gear3", "green")
         
         
         updateText(self, self.ui.text_fuel, "JAS/fuel/pct")
@@ -333,6 +342,8 @@ class RunGUI(QMainWindow):
         updateSlider(self, self.ui.slider_rudder, "sim/joystick/yoke_heading_ratio", type=2)
         # updateSlider(self, self.ui.slider_pitch, "sim/joystick/yoke_pitch_ratio", type=2)
         updateSlider(self, self.ui.slider_throttle, "sim/cockpit2/engine/actuators/throttle_ratio_all", type=2)
+        updateSlider(self, self.ui.slider_bromsV, "sim/cockpit2/controls/left_brake_ratio", type=2)
+        updateSlider(self, self.ui.slider_bromsH, "sim/cockpit2/controls/right_brake_ratio", type=2)
         # 
         #self.ui.auto_afk_text.setValue(self.xp.getDataref("JAS/autopilot/afk",1))
         

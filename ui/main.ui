@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>825</width>
-    <height>327</height>
+    <width>869</width>
+    <height>361</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -367,7 +367,229 @@
       <property name="spacing">
        <number>0</number>
       </property>
-      <item row="7" column="5">
+      <item row="6" column="1">
+       <widget class="QLabel" name="lamps_gear2">
+        <property name="text">
+         <string>V STÄLL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QPushButton" name="button_att">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>ATT</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QSpinBox" name="auto_hojd_text">
+        <property name="maximum">
+         <number>30000</number>
+        </property>
+        <property name="singleStep">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="lamps_rev">
+        <property name="text">
+         <string>Reversering</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Bränsle</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string> </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="slider_throttle">
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="11" column="3">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QSlider" name="slider_bromsV">
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QSlider" name="slider_bromsH">
+          <property name="maximum">
+           <number>1000</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="button_afk">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>AFK</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="3">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Fotbroms</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPushButton" name="button_spak">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>SPAK</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QPushButton" name="button_start">
+        <property name="text">
+         <string>Motor Start</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="button_a15">
+        <property name="text">
+         <string>A15.5</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLabel" name="lamps_gear1">
+        <property name="text">
+         <string>NOSSTÄLL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLabel" name="lamps_transsonic">
+        <property name="text">
+         <string>Transsonik</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QLabel" name="text_fuel">
+        <property name="font">
+         <font>
+          <family>DejaVu Sans</family>
+          <pointsize>13</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="lamps_master1">
+        <property name="font">
+         <font>
+          <family>DejaVu Sans</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Huvud</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QPushButton" name="button_tanka_50">
+        <property name="text">
+         <string>Tanka 50%</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="2">
+       <layout class="QVBoxLayout" name="indicatorLayout"/>
+      </item>
+      <item row="11" column="0">
+       <widget class="QPushButton" name="button_parkbrake">
+        <property name="text">
+         <string>Parkeringsbroms</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="5">
        <layout class="QGridLayout" name="gridLayout_6">
         <item row="0" column="0">
          <widget class="QLabel" name="lamps_ebk">
@@ -406,48 +628,31 @@
         </item>
        </layout>
       </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="button_afk">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>30</width>
-          <height>0</height>
-         </size>
-        </property>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="button_master">
         <property name="text">
-         <string>AFK</string>
+         <string>Kvittera Larm</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
-       <widget class="QPushButton" name="button_att">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>30</width>
-          <height>0</height>
-         </size>
-        </property>
+      <item row="4" column="1">
+       <widget class="QLabel" name="lamps_gears">
         <property name="text">
-         <string>ATT</string>
+         <string>Landställ reglage</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
-       <widget class="QPushButton" name="button_start">
+      <item row="7" column="1">
+       <widget class="QLabel" name="lamps_gear3">
         <property name="text">
-         <string>Motor Start</string>
+         <string>H STÄLL</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="5">
+       <widget class="QLabel" name="lamps_bramgd">
+        <property name="text">
+         <string>BRÄ &lt; 25</string>
         </property>
        </widget>
       </item>
@@ -461,98 +666,6 @@
         </property>
         <property name="text">
          <string>Luftbroms</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="button_master">
-        <property name="text">
-         <string>Kvittera Larm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="lamps_gears">
-        <property name="text">
-         <string>Landställ</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="3">
-       <widget class="QSpinBox" name="auto_hojd_text">
-        <property name="maximum">
-         <number>30000</number>
-        </property>
-        <property name="singleStep">
-         <number>10</number>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="lamps_park">
-        <property name="text">
-         <string>Parkeringsbroms</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QLabel" name="text_fuel">
-        <property name="font">
-         <font>
-          <family>DejaVu Sans</family>
-          <pointsize>13</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="QSpinBox" name="auto_afk_text">
-        <property name="maximum">
-         <number>3000</number>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="button_tanka">
-        <property name="font">
-         <font>
-          <family>DejaVu Sans</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Tanka Full</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QPushButton" name="button_spak">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>30</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>SPAK</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="4">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Bränsle</string>
         </property>
        </widget>
       </item>
@@ -596,10 +709,16 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="2">
-       <widget class="QPushButton" name="button_a15">
+      <item row="0" column="3">
+       <widget class="QPushButton" name="button_tanka">
+        <property name="font">
+         <font>
+          <family>DejaVu Sans</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
         <property name="text">
-         <string>A15.5</string>
+         <string>Tanka Full</string>
         </property>
        </widget>
       </item>
@@ -616,14 +735,14 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
-       <widget class="QPushButton" name="button_tanka_50">
-        <property name="text">
-         <string>Tanka 50%</string>
+      <item row="2" column="3">
+       <widget class="QSpinBox" name="auto_afk_text">
+        <property name="maximum">
+         <number>3000</number>
         </property>
        </widget>
       </item>
-      <item row="5" column="3">
+      <item row="8" column="3">
        <widget class="QPushButton" name="button_hojd">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -642,36 +761,7 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
-       <widget class="QSlider" name="slider_throttle">
-        <property name="maximum">
-         <number>1000</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="lamps_master1">
-        <property name="font">
-         <font>
-          <family>DejaVu Sans</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Huvud</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="2">
-       <layout class="QVBoxLayout" name="indicatorLayout"/>
-      </item>
-      <item row="6" column="2">
+      <item row="10" column="2">
        <widget class="QSlider" name="slider_rudder">
         <property name="minimum">
          <number>-1000</number>
@@ -684,17 +774,17 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="lamps_rev">
+      <item row="9" column="3">
+       <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Reversering</string>
+         <string> </string>
         </property>
        </widget>
       </item>
-      <item row="0" column="5">
-       <widget class="QLabel" name="lamps_transsonic">
+      <item row="4" column="5">
+       <widget class="QLabel" name="lamps_skak">
         <property name="text">
-         <string>Transsonik</string>
+         <string>Skak i spaken</string>
         </property>
        </widget>
       </item>
