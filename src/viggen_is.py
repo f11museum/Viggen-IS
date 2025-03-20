@@ -22,8 +22,8 @@ from pathlib import Path
 import XPlaneUdp
 
 
-#LISTEN_PORT = 49006
-SEND_PORT = 49000
+#LISTEN_PORT = 47006
+SEND_PORT = 47000
 XPLANE_IP = "192.168.0.37"
 XPLANE_IP2 = "192.168.0.38"
 
@@ -349,7 +349,11 @@ class RunGUI(QMainWindow):
         
         # VAT tablån
         # updateLamp(self, self.ui.vat_lamp_normsty, "JAS/io/vat/lo/normsty", "orange")
-
+        tilsmode = int(self.xp.getDataref("JAS/io/aj37/lo/tils_on",1) )
+        tilsmode2 = int(self.xp.getDataref("JAS/io/aj37/lo/tils_off",1) )
+        self.xp2.sendDataref("JAS/io/aj37/di/tils_on", tilsmode)
+        self.xp2.sendDataref("JAS/io/aj37/di/tils_off", tilsmode2)
+        print(tilsmode)
 
         
     def buttonPressedValue(self, dataref, value):
