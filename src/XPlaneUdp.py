@@ -105,3 +105,47 @@ class XPlaneUdp:
         assert(len(message)==413)
         #print(message[:50])
         self.sock.sendto(message, (self.xip, self.xport))
+
+    def flush(self):
+        """Drain any pending UDP packets from the socket buffer.
+
+        Call this before (re)subscribing so old RREF, packets left over from a
+        previous run are not mistakenly mapped onto our fresh sendList indices.
+        """
+        while True:
+            try:
+                self.sock.recvfrom(1024)
+            except BlockingIOError:
+                break
+            except Exception:
+                break
+
+    def stopAllSubscriptions(self, max_index=512, rounds=3):
+        """Tell X-Plane to stop streaming any dataref indices it may still have
+        assigned to our IP:port from a previous run of this program.
+
+        X-Plane's UDP is connectionless and has no global "reset" command. The
+        only way to cancel a stream is to send RREF with interval=0 and the same
+        index X-Plane assigned. Since a fresh Python process does not know the
+        old indices, we cancel every index in range(0, max_index) for our own
+        source port. Unsubscribed indices are simply ignored by X-Plane.
+
+        The cancel is sent multiple times (rounds) because UDP is unreliable and
+        we want X-Plane to actually process the cancellations before new
+        subscriptions are created.
+
+        This only affects X-Plane's subscription table for our listen port
+        (49006 / 49007). Other programs using different ports are untouched.
+        """
+        cmd = b"RREF\x00"
+        empty = b""
+        for _ in range(rounds):
+            for i in range(max_index):
+                message = struct.pack("<5sii400s", cmd, 0, i, empty)
+                self.sock.sendto(message, (self.xip, self.xport))
+            time.sleep(0.01)
+
+        # reset our own bookkeeping so a fresh subscription starts clean
+        self.sendList = []
+        self.dataList = {}
+        self.connected = False

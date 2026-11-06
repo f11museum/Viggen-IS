@@ -422,7 +422,7 @@
         <item>
          <widget class="QLabel" name="label_4">
           <property name="text">
-           <string> </string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -777,7 +777,7 @@
       <item row="9" column="3">
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string> </string>
+         <string/>
         </property>
        </widget>
       </item>
@@ -785,6 +785,27 @@
        <widget class="QLabel" name="lamps_skak">
         <property name="text">
          <string>Skak i spaken</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QPushButton" name="button_huvudstrom">
+        <property name="text">
+         <string>Huvudström</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QPushButton" name="button_ltkran">
+        <property name="text">
+         <string>LT-kran</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QPushButton" name="button_generator">
+        <property name="text">
+         <string>Generator</string>
         </property>
        </widget>
       </item>

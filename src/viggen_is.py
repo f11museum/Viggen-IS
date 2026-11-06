@@ -180,6 +180,25 @@ class RunGUI(QMainWindow):
         self.buttonList = []
         self.xp = XPlaneUdp.XPlaneUdp(XPLANE_IP,SEND_PORT)
         self.xp2 = XPlaneUdp.XPlaneUdp(XPLANE_IP2,SEND_PORT, listen_port=49007)
+
+        # 1) drop stale packets left in the socket buffer from a previous run
+        self.xp.flush()
+        self.xp2.flush()
+
+        # 2) cancel any streams X-Plane may still be sending to our ports from
+        #    a previous run, so indices line up with our fresh subscriptions
+        self.xp.stopAllSubscriptions()
+        self.xp2.stopAllSubscriptions()
+
+        # 3) drop any RREF, packets that were already in flight when we sent
+        #    the cancellations
+        self.xp.flush()
+        self.xp2.flush()
+
+        # 4) give X-Plane a moment to process the cancellations before we
+        #    create new subscriptions on the same indices
+        time.sleep(0.2)
+
         self.xp.getDataref("sim/flightmodel/position/indicated_airspeed",1)
         
         self.lat = self.xp.getDataref("sim/flightmodel/position/latitude",1)
@@ -228,7 +247,6 @@ class RunGUI(QMainWindow):
         self.ui.indicatorLayout.addWidget(self.indicator)
         self.indicator.setDotPosition(0.5, -0.5)
         
-        connectButton(self, self.ui.button_start,"JAS/io/frontpanel/di/start")
         connectButton(self, self.ui.button_master,"JAS/io/frontpanel/di/master")
         
         connectButton(self, self.ui.button_systest,"JAS/io/vu22/di/syst")
@@ -266,6 +284,13 @@ class RunGUI(QMainWindow):
         self.buttonList.append( ColorButton(self,self.ui.button_parkbrake, "sim/cockpit2/controls/parking_brake_ratio", "red", 0, lampDR="sim/cockpit2/controls/parking_brake_ratio") )
         #self.buttonList.append( ColorButton(self,self.ui.dap_button_pluv, "JAS/system/dap/lamp/pluv", "green", 0) )
 
+
+        
+        self.buttonList.append( ColorButton(self,self.ui.button_huvudstrom, "JAS/io/leftpanel/di/mainpower", "orange", 0, lampDR="JAS/io/leftpanel/knapp/mainpower") )
+        self.buttonList.append( ColorButton(self,self.ui.button_ltkran, "JAS/io/leftpanel/di/ltkran", "orange", 0, lampDR="JAS/io/leftpanel/knapp/ltkran") )
+        self.buttonList.append( ColorButton(self,self.ui.button_generator, "JAS/io/leftpanel/di/generator", "orange", 0, lampDR="JAS/io/leftpanel/knapp/generator") )
+        self.buttonList.append( ColorButton(self,self.ui.button_start, "JAS/io/leftpanel/di/start", "orange", 1, lampDR="JAS/io/leftpanel/knapp/hstrom") )
+        
         self.ui.button_tanka.clicked.connect(self.buttonTankaFull)
         self.ui.button_tanka_50.clicked.connect(self.buttonTanka50)
         
@@ -353,7 +378,7 @@ class RunGUI(QMainWindow):
         tilsmode2 = int(self.xp.getDataref("JAS/io/aj37/lo/tils_off",1) )
         self.xp2.sendDataref("JAS/io/aj37/di/tils_on", tilsmode)
         self.xp2.sendDataref("JAS/io/aj37/di/tils_off", tilsmode2)
-        print(tilsmode)
+        #print(tilsmode)
 
         
     def buttonPressedValue(self, dataref, value):
